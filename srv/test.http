@@ -1,0 +1,48 @@
+
+
+
+###
+GET http://localhost:4004/CatalogService
+
+### Reading Employee Data
+GET http://localhost:4004/CatalogService/EmployeeSet
+
+### Reading Purchase Order data
+GET http://localhost:4004/CatalogService/POs?$top=2&$expand=Items,PARTNER_GUID
+
+### POST on Employeeset
+POST http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+"nameFirst": "Afreed",
+"nameMiddle": null,
+"nameLast": "Shaik",
+"nameInitials": null,
+"sex": "F",
+"language": "E",
+"phoneNumber": "+91-9187598954",
+"email": "afreed.shaik@apple.com",
+"loginName": "AFREED",
+"Currency_code": "USD",
+"salaryAmount": 555589549,
+"accountNumber": "111222333",
+"bankId": "510000655",
+"bankName": "My Bank of Antioch"
+}
+
+### GET_ENTITY ODATA V4 on Employeeset
+GET http://localhost:4004/CatalogService/EmployeeSet/320ea082-08c7-450f-b229-99af280d67b5
+
+
+### UPDATE on Employeeset
+PATCH http://localhost:4004/CatalogService/EmployeeSet/320ea082-08c7-450f-b229-99af280d67b5
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+"bankName": "SWISS BANK",
+"salaryAmount": 99999
+}
+
+###Read Single PO - Old syntax works as it is not UUID type
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')
