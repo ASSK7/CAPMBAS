@@ -84,3 +84,12 @@ Content-Type: application/json;IEEE754Compatible=true
 
 ### Delete Employee with custom Generic Handler ON
 DELETE http://localhost:4004/mysrv/DeleteEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C197A7FB
+
+###Action - boost
+POST http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+###Function - largest
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')/CatalogService.largestOrder()

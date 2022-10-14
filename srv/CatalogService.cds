@@ -14,8 +14,12 @@ service CatalogService @(path: '/CatalogService'){   //we can provide any name f
    )
     as projection on transaction.purchaseorder{
        *,  //means all fields
-       Items : redirected to POItems //Items is association created in purchase order set
-    };   //redirected to used for $expand
+       round(GROSS_AMOUNT,2) as GROSS_AMOUNT : Decimal(15, 2),
+       Items : redirected to POItems //Items is association created in purchase order set,  //redirected to used for $expand
+    }actions{
+        function largestOrder() returns array of POs; //fetching high salary amount
+        action boost(); //boosting salary amount by 20000
+    }
 
     entity POItems @(
        title : '{i18n>poItems}'

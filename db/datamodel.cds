@@ -99,6 +99,7 @@ context transaction {   //for transaction data
         // TAX_AMOUNT : Decimal;         	
         LIFECYCLE_STATUS : String(1);	
         OVERALL_STATUS : String(1);
+        NOTE : String(255);
         Items: association to many poitems on Items.PARENT_KEY = $self
    }
 
