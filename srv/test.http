@@ -46,3 +46,41 @@ Content-Type: application/json;IEEE754Compatible=true
 
 ###Read Single PO - Old syntax works as it is not UUID type
 GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')
+
+
+### Create Employee with custom Generic Handler ON
+POST http://localhost:4004/mysrv/InsertEmployeeSrv
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+"ID": "02BD2137-0890-1EEA-A6C2-BB55C197A7FB",
+"nameFirst": "Afreed",
+"nameMiddle": null,
+"nameLast": "Shaik",
+"nameInitials": null,
+"sex": "F",
+"language": "E",
+"phoneNumber": "+91-9187598954",
+"email": "afreed.shaik@apple.com",
+"loginName": "AFREED",
+"Currency_code": "USD",
+"salaryAmount": 555589549,
+"accountNumber": "111222333",
+"bankId": "510000655",
+"bankName": "My Bank of Antioch"
+}
+
+### Update Employee with custom Generic Handler ON
+
+PUT http://localhost:4004/mysrv/UpdateEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+"ID": "02BD2137-0890-1EEA-A6C2-BB55C19787FB",
+"nameFirst": "Hari",
+"nameMiddle": null,
+"nameLast": "Priya"
+}
+
+### Delete Employee with custom Generic Handler ON
+DELETE http://localhost:4004/mysrv/DeleteEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C197A7FB
