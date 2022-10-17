@@ -93,3 +93,21 @@ Content-Type: application/json
 
 ###Function - largest
 GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')/CatalogService.largestOrder()
+
+
+### ODATA V2
+### Servier endpoint by prefixing v2
+GET http://localhost:4004/v2/CatalogService
+
+### Calling Custom Action using V2
+POST http://localhost:4004/v2/CatalogService/POs_boost?NODE_KEY=74867AD200E41EDBA5D8B0C98DC28052
+Content-Type : application/json
+
+{}
+
+### Calling Custom Function using V2
+GET http://localhost:4004/v2/CatalogService/POs_largestOrder?ID=74867AD200E41EDBA5D8B0C98DC28052
+
+
+
+
