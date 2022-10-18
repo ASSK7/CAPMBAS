@@ -61,11 +61,11 @@ context master {   //context is used to group the tables
         WEIGHT_MEASURE : String(12);
         WEIGHT_UNIT	: String(2);
         CURRENCY_CODE : String(4);
-        PRICE : Decimal;	
-        WIDTH : Decimal;	         	
-        DEPTH : Decimal;	         	
-        HEIGHT : Decimal;	         	
-        DIM_UNIT : Decimal;	
+        PRICE : Decimal(15,2);	
+        WIDTH : Decimal(15,2);	         	
+        DEPTH : Decimal(15,2);	         	
+        HEIGHT : Decimal(15,2);         	
+        DIM_UNIT : Decimal(15,2);
         DESCRIPTION : localized String(256);  //localization
     }
 
@@ -102,6 +102,7 @@ context transaction {   //for transaction data
         NOTE : String(255);
         Items: association to many poitems on Items.PARENT_KEY = $self
    }
+   
 
    entity poitems : common.Amount {
         key NODE_KEY : Guid;                        	

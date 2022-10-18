@@ -11,7 +11,9 @@
     "express": "^4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-purchaseorder": "cds watch --open purchaseorder/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-purchase": "cds watch --open purchase/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -42,6 +44,10 @@
     }
   },
   "devDependencies": {
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/ux-specification": "^1.102.9",
+    "@sapui5/ts-types": "^1.92.2",
+    "eslint": "^7.32.0",
     "sqlite3": "^5.1.2"
   },
   "cds": {
@@ -53,5 +59,9 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/purchaseorder",
+    "app/purchase"
+  ]
 }

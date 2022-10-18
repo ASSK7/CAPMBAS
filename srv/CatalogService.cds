@@ -20,6 +20,14 @@ service CatalogService @(path: '/CatalogService'){   //we can provide any name f
         function largestOrder() returns array of POs; //fetching high salary amount
         action boost(); //boosting salary amount by 20000
     }
+ 
+ //since GROSS_AMOUNT label is not displaying in the Fiori elements app then
+ annotate POs with {
+     GROSS_AMOUNT @title : 'Gross Amount';
+};
+ 
+
+
 
     entity POItems @(
        title : '{i18n>poItems}'
