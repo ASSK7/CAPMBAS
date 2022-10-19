@@ -45,4 +45,16 @@ annotate transaction.poitems with {
         TAX_AMOUNT  @title : 'Tax Amount';         	
         NODE_KEY @title : 'Node Key';
         PO_ITEM_POS @title : 'PO Items Position'; 
+        PRODUCT_GUID @title : 'Product GUID'; 
 };
+
+annotate master.product with {
+    NODE_KEY @title : 'Node Key';                        	
+        PRODUCT_ID 	@title : 'Product Key';
+        TYPE_CODE @title : 'Type Code';
+        CATEGORY @title : 'Category';                                   	         	
+        TAX_TARIF_CODE @title : 'Tarrif Code';
+        PRICE @title : 'Price';
+        DESCRIPTION @title : 'Description';
+};
+

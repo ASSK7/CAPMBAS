@@ -15,6 +15,18 @@ service CatalogService @(path: '/CatalogService'){   //we can provide any name f
     as projection on transaction.purchaseorder{
        *,  //means all fields
        round(GROSS_AMOUNT,2) as GROSS_AMOUNT : Decimal(15, 2),
+       CASE LIFECYCLE_STATUS   //in fiori app insted on N,D,B full form will appear
+          when 'N' then 'New'
+          when 'D' then 'Delivered'
+          when 'B' then 'Blocked'
+          end as LIFECYCLE_STATUS : String(20),
+
+          CASE LIFECYCLE_STATUS   //in fiori app to provide icons
+          when 'N' then 2
+          when 'D' then 1
+          when 'B' then 3
+          end as Criticality : Integer,
+
        Items : redirected to POItems //Items is association created in purchase order set,  //redirected to used for $expand
     }actions{
         function largestOrder() returns array of POs; //fetching high salary amount
@@ -24,6 +36,7 @@ service CatalogService @(path: '/CatalogService'){   //we can provide any name f
  //since GROSS_AMOUNT label is not displaying in the Fiori elements app then
  annotate POs with {
      GROSS_AMOUNT @title : 'Gross Amount';
+     LIFECYCLE_STATUS @title : 'Life Cycle Status';
 };
  
 
