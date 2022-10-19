@@ -10,7 +10,8 @@ service CatalogService @(path: '/CatalogService'){   //we can provide any name f
    entity BPSet as projection on master.businesspartner;
 
    entity POs @(
-      title: '{i18n>poHeader}'
+      title: '{i18n>poHeader}',
+      odata.draft.enabled : true  //to enable the draft functionality
    )
     as projection on transaction.purchaseorder{
        *,  //means all fields
