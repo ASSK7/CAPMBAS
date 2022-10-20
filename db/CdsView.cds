@@ -10,7 +10,7 @@ context CdsViews {
         PARTNER_GUID.BP_ID as ![PartnerID],
         PARTNER_GUID.COMPANY_NAME  as ![CompanyName],
         GROSS_AMOUNT as ![POGrossAmount],
-        CURRENCY_CODE AS ![POCurrencyCode],
+        Currency.code AS ![POCurrencyCode],
         LIFECYCLE_STATUS as ![LifeCycleStatus],
     key Items.PO_ITEM_POS as ![ItemPosition],
         Items.PRODUCT_GUID.PRODUCT_ID as ![ProductID],
@@ -19,7 +19,7 @@ context CdsViews {
         PARTNER_GUID.ADDRESS_GUID.COUNTRY as ![Country],
         Items.GROSS_AMOUNT as ![GrossAmount],
         Items.NET_AMOUNT as ![NetAmount],
-        Items.CURRENCY_CODE as ![CurrencyCode]
+        Items.Currency.code as ![CurrencyCode]
 
     };
 
@@ -53,7 +53,7 @@ context CdsViews {
        select from transaction.poitems{
            PARENT_KEY.PARTNER_GUID.NODE_KEY as ![Partner],
            PRODUCT_GUID.NODE_KEY as ![ProductID],
-           CURRENCY_CODE as ![CurrencyCode],
+           Currency.code as ![CurrencyCode],
            GROSS_AMOUNT as ![GrossAmount],
            NET_AMOUNT as ![NetAmount],
            TAX_AMOUNT as ![TaxAmount],

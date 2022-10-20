@@ -1,13 +1,60 @@
 using CatalogService as service from '../../srv/CatalogService';
 
 //********************  Custom Annotations by AFREED  ***************************/
+
+//************* Adding Value Help for Partner GUID ****************/
+
+annotate CatalogService.POs with {
+    PARTNER_GUID@(
+        Common : {
+            Text : PARTNER_GUID.COMPANY_NAME
+        },
+        ValueList.entity : CatalogService.BPSet
+    )
+};
+
+@cds.odata.valuelist
+annotate CatalogService.BPSet with @(
+    UI.Identification:[{
+        $Type : 'UI.DataField',
+        Value : COMPANY_NAME ,
+    }]
+);
+
+
+//****************************************************************/
+//************* Adding Value Help for Product GUID****************/
+
+annotate CatalogService.POItems with {
+    PRODUCT_GUID@(
+        Common : {
+            Text : PRODUCT_GUID.DESCRIPTION
+        },
+        ValueList.entity : CatalogService.ProductSet
+    )
+};
+
+@cds.odata.valuelist
+annotate CatalogService.ProductSet with @(
+    UI.Identification:[{
+        $Type : 'UI.DataField',
+        Value : PRODUCT_ID ,
+    }]
+);
+
+
+//****************************************************************/
+
+
+//Adding fields , filters
+
 annotate CatalogService.POs with @(
     UI : {
         SelectionFields : [     //SelectionFields are filters
            PO_ID,
            GROSS_AMOUNT,
            LIFECYCLE_STATUS,
-           CURRENCY_CODE
+           Currency.code
         ],
         LineItem : [       //LineItem are table columns
             {
@@ -26,7 +73,7 @@ annotate CatalogService.POs with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : CURRENCY_CODE,
+                Value : Currency.code,
             },
             {
                 $Type : 'UI.DataField',
@@ -109,7 +156,7 @@ annotate CatalogService.POs with @(
                 },
                  {
                     $Type : 'UI.DataField',
-                    Value : CURRENCY_CODE,
+                    Value : Currency.code,
                 },
                  {
                     $Type : 'UI.DataField',
@@ -144,7 +191,7 @@ annotate CatalogService.POItems with @(
                 },
                 {
                     $Type : 'UI.DataField',
-                    Value : CURRENCY_CODE,
+                    Value : Currency.code,
                 },
         ],
         //if we click on the line item then it will navigate to another page
@@ -154,7 +201,7 @@ annotate CatalogService.POItems with @(
             TypeNamePlural : 'PO Items',
             Title : {
                 $Type : 'UI.DataField',
-                Value : NODE_KEY,
+                Value : ID,
             },
             Description : {
                 $Type : 'UI.DataField',
@@ -198,7 +245,7 @@ annotate CatalogService.POItems with @(
                 },
                 {
                     $Type : 'UI.DataField',
-                    Value : CURRENCY_CODE,
+                    Value : Currency.code,
                 },
             ]
             

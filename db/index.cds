@@ -12,6 +12,7 @@ annotate transaction.purchaseorder with {
         LIFECYCLE_STATUS  @title : 'LifeCycle Status';
         OVERALL_STATUS  @title : 'Overall Status';
         NOTE  @title : 'Note';
+        PARTNER_GUID @title : 'Partner GUID';
     
 };
 
@@ -23,9 +24,9 @@ annotate master.businesspartner with {
         PHONE_NUMBER @title : 'Phone';               	
         FAX_NUMBER @title : 'Fax';             	
         WEB_ADDRESS @title : 'Website';                                                                                                                                                                                                                                                     	            	
-        BP_ID @title : 'Partner ID';	
-        COMPANY_NAME @title : 'Company Name';       
-
+        BP_ID @title : 'Business Partner Code';	
+        COMPANY_NAME @title : 'Company Name';   
+        PARTNER_GUID  @title : 'Partner GUID'; 
 };
 
 annotate master.address with {
@@ -46,6 +47,7 @@ annotate transaction.poitems with {
         NODE_KEY @title : 'Node Key';
         PO_ITEM_POS @title : 'PO Items Position'; 
         PRODUCT_GUID @title : 'Product GUID'; 
+        
 };
 
 annotate master.product with {
@@ -56,5 +58,6 @@ annotate master.product with {
         TAX_TARIF_CODE @title : 'Tarrif Code';
         PRICE @title : 'Price';
         DESCRIPTION @title : 'Description';
+        
 };
 

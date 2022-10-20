@@ -25,7 +25,7 @@ type AmountT : Decimal(15, 2)@(
 
 //Aspect
 aspect Amount {
-        CURRENCY_CODE : String(4);	
+        Currency : Currency;	
         GROSS_AMOUNT : Decimal;       	
         NET_AMOUNT : Decimal;         	
         TAX_AMOUNT : Decimal; 
