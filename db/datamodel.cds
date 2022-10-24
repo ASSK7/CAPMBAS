@@ -65,7 +65,7 @@ context master {   //context is used to group the tables
         WIDTH : Decimal(15,2);	         	
         DEPTH : Decimal(15,2);	         	
         HEIGHT : Decimal(15,2);         	
-        DIM_UNIT : Decimal(15,2);
+        DIM_UNIT : String(4);
         DESCRIPTION : localized String(256);  //localization
     }
 

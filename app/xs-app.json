@@ -1,0 +1,17 @@
+{
+    "welcomeFile": "purchase/webapp/",
+    "authenticationMethod": "none",
+    "routes": [
+      {
+        "source": "^/purchase/webapp/(.*)$",
+        "target": "$1",
+        "localDir": "purchase/webapp/"
+
+      },
+      {
+        "source": "^/(.*)$",
+        "destination": "srv-api"
+      }
+    ]
+  }
+
