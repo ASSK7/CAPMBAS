@@ -1,9 +1,22 @@
 using { afreed.db.master , afreed.db.transaction } from '../db/datamodel';
 
 
-service CatalogService @(path: '/CatalogService'){   //we can provide any name for service , @path is optional
+service CatalogService @(path: '/CatalogService')
+                       @(requires : 'authenticated-user')
+{   //we can provide any name for service , @path is optional
    
-   entity EmployeeSet as projection on master.employees; 
+   entity EmployeeSet @(restrict : [
+       {
+           grant : ['READ'],
+           to : 'Viewer' ,  //role created by us
+           where : 'bankName = $user.BankName' //BankName is userAttribute in package.json
+       },
+       {
+           grant : ['WRITE'],
+           to : 'Admin'
+       }
+   ])  
+   as projection on master.employees; 
    entity AddressSet as projection on master.address;
    entity ProductSet as projection on master.product;
    // entity ProductTextSet as projection on master.prodtext; 

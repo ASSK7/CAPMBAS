@@ -1,0 +1,46 @@
+{
+    "xsappname" : "BASCAPM", 
+    "tenant-mode" : "dedicated",
+    "scopes"     : [ { 
+                      "name" : "$XSAPPNAME.Viewer", 
+                      "description" : "display" 
+                    }, 
+                     { 
+                      "name" : "$XSAPPNAME.Admin", 
+                      "description" : "admin" 
+                    }
+  ],
+   "attributes" : [ { 
+                      "name" : "BankName", 
+                      "description" : "BankName", 
+                      "valueType" : "string" }
+                   ], 
+   "role-templates": [ { 
+                      "name"                : "Viewer", 
+                      "description"         : "View all Employee data", 
+                      "scope-references"    : [ 
+                                           "$XSAPPNAME.Viewer" ], 
+                      "attribute-references": [
+                                              {
+                                              "name" : "BankName"
+                                              }
+                                              ]  
+                      }, 
+                     { 
+                      "name"               : "Admin", 
+                      "description"        : "Admininstrator", 
+                      "scope-references"   : [ 
+                                            "$XSAPPNAME.Admin" ]
+                      } 
+                     ], 
+    "role-collections": [
+                        {
+                         "name": "app_Administrator",
+                         "description": "Administrative access",
+                         "role-template-references": [
+                                                    "$XSAPPNAME.Admin"
+                                                     ]
+                        }
+                    ]
+  }
+  

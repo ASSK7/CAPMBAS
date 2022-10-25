@@ -9,8 +9,11 @@
     "@sap/approuter": "^11.5.1",
     "@sap/cds": "^6",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.10",
+    "@sap/xsenv": "^3.3.2",
+    "@sap/xssec": "^3.2.14",
     "express": "^4",
-    "hdb": "^0.19.5"
+    "hdb": "^0.19.5",
+    "passport": "^0.6.0"
   },
   "scripts": {
     "start": "cds run",
@@ -57,8 +60,43 @@
       "deploy-format": "hdbtable"
     },
     "requires": {
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "auth": {
+        "[production]": {
+          "strategy": "JWT"
+        },
+        "[development]": {
+          "strategy": "mock",
+          "users": {
+            "afreed": {
+              "roles": [
+                "Admin",
+                "Viewer"
+              ],
+              "userAttributes": {
+                "BankName": [
+                  "$UNRESTRICTED"
+                ]
+              }
+            },
+            "priya": {
+              "roles": [
+                "Viewer"
+              ],
+              "userAttributes": {
+                "BankName": [
+                  "My Bank of London",
+                  "My Bank of New York"
+                ]
+              }
+            }
+          }
+        }
+      },
       "db": {
-        "kind": "hana-cloud",
+        "kind": "sqlite",
         "credentials": {
           "database": "afreed.db"
         }
